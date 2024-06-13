@@ -1,0 +1,84 @@
+.togglebtn{
+    color: #776f6f !important;
+}
+.slide-toggle{
+    margin-left: 40% !important;
+}
+
+.example-full-width {
+    width: 100%;
+  }
+  .sendbtn {border-radius: 12px;}
+  .prompt-label{
+    height: 2.5rem;
+    text-align: center;
+    width: 100%;
+    border: 1px dotted;
+    border-radius: 1rem;
+    padding-top: 1.5%;
+    margin-top: 5%;
+  }
+  .prompt-option{
+    height: 2.5rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    padding-top: 3%;
+  }
+  ::ng-deep .modal-md{
+    --bs-modal-width: 800px !important;
+  }
+  .btn-white{
+    background-color: white;
+    height: 1.5rem;
+    line-height: 0;
+    padding-right: 11.5px;
+  }
+  .chat-content{
+    height: 555px;
+    overflow-y: scroll;
+  }
+
+  .fa-book-open, .fa-picture-o{
+    font-size: x-large;
+  }
+  ::ng-deep li{
+    list-style: none !important;
+  }
+  .containers {
+    width: 100%;
+}
+
+::ng-deep .incoming {
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #c6c6c6;
+    width: fit-content;
+    max-width: 80%;
+    height: auto;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #c6c6c6;
+    border-radius: 10px;
+}
+
+::ng-deep .outgoing {
+    position: relative;
+    margin-bottom: 10px;
+    max-width: 80%;
+    margin-left: auto;
+    padding: 10px;
+    background-color: #75bcf6;
+    width: fit-content;
+    height: auto;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #75bcf6;
+    border-radius: 10px;
+}
+
+::ng-deep .message-content {
+    padding: 0px !important;
+    margin: 0px !important;
+}

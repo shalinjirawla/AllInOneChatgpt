@@ -1,0 +1,140 @@
+<div class="row">
+    <div class="col-4">
+        <h5>ChatGPT</h5>
+    </div>
+    <div class="col-4">
+        <mat-slide-toggle class="slide-toggle"><span class="togglebtn">Web Access</span></mat-slide-toggle>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-1 offset-9"> <i class="fas fa-share" title="Share Conversation"></i></div>
+            <div class="col-1"> <i class=" fas fa-solid fa-brush" title="Clear Conversation " (click)="clear()"></i></div>
+            <div class="col-1"> <i class="fa fa-sticky-note-o" aria-hidden="true" title="View Conversation" (click)="isHistory = true"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="chat-content">
+    <div [@routerTransition]>
+        <form #chatBotForm="ngForm">
+            <div class="chatbot">
+                <div class="containers">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-1">
+        <div class="row">
+            <div class="col-1"> <i class='fas fa-book-open' (click)="isModalOpen = true"></i></div> &nbsp;&nbsp;&nbsp;
+            <div class="col-1"><i class="fa fa-picture-o" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <div class="col-10 ">
+        <mat-form-field class="example-full-width">
+            <div class="chat-input">
+                <textarea matInput placeholder="Use / to select prompts , Shift+Enter to add new line"
+                    spellcheck="false" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchInput" (keyup.enter)="handleChat()"></textarea>
+            </div>
+        </mat-form-field>
+    </div>
+    <div class="col-1">
+        <button mat-raised-button color="primary" class="sendbtn w-100" (click)="handleChat()">Send</button>
+    </div>
+
+</div>
+<abp-modal [(visible)]="isModalOpen">
+    <ng-template #abpHeader>
+        <h3>Prompt Library</h3>
+    </ng-template>
+    <ng-template #abpBody>
+        <mat-tab-group>
+            <mat-tab label="Your Prompt">
+                <div class="">
+                    <label for="" class="prompt-label" *ngIf="savedPrompt.length==0">You have no prompts.</label>
+                    <div class="w-100" *ngIf="savedPrompt.length>0">
+                        <div class="row">
+                            <div class="col-6 mt-2" *ngFor="let item Of savedPrompt">
+                                <div class="row prompt-option m-1">
+                                    <div class="col-7">
+                                        {{item.title}}
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button class="btn btn-white"
+                                                    (click)="editPrompt(item.id)">Edit</button>
+                                            </div>
+                                            <div class="col-6">
+                                                <button class="btn btn-white" (click)="onUse(item.content)">Use</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-default btn-primary m-1" *ngIf="!isCreateNewPrompt"
+                        (click)="isCreateNewPrompt=true" > Create new prompt</button>
+                    <form [formGroup]="form">
+                        <div class="" *ngIf="isCreateNewPrompt">
+                            <div class="form-group">
+                                <label for="">Prompt Title</label>
+                                <input type="text" class="w-100" class="form-control" formControlName="title">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Prompt Content</label>
+                                <textarea name="" id="" cols="30" rows="2" class="w-100" class="form-control"
+                                    formControlName="content"></textarea>
+                            </div>
+                            <div class="d-flex">
+                                <button class="btn btn-primary" (click)="createNewPrompt()">Save</button>
+                                <button class="btn btn-default" (click)="isCreateNewPrompt=false">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </mat-tab>
+            <mat-tab label="Community Prompts">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col-6 mt-2" *ngFor="let item Of communityPromptList">
+                            <div class="row prompt-option m-1">
+                                <div class="col-7">
+                                    {{item.title}}
+                                </div>
+                                <div class="col-5">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button class="btn btn-white" (click)="savePrompt(item)">Save</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-white" (click)="onUse(item.content)">Use</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </ng-template>
+
+</abp-modal>
+<abp-modal [(visible)]="isHistory">
+    <ng-template #abpHeader>
+      <h3>History conversations with ChatGPT</h3>
+    </ng-template>
+  
+    <ng-template #abpBody>
+    <p>Modal content</p>
+    </ng-template>
+  
+    <ng-template #abpFooter>
+      <button type="button" class="btn btn-secondary" abpClose>Close</button>
+    </ng-template>
+  </abp-modal>

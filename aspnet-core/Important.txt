@@ -1,0 +1,40 @@
+Hello Shalin,
+
+Let's start with a one-week plan. Doesn't need to be feature complete each step but enough to demo e2e hopefully. We can meet to discuss the tasks in more detail. Try to commit at each big task/component/day and send report EOD with screenshots and questions.
+
+Reference material:
+- ChatHub multiple AI chat screen with prompts and conversation history (https://chromewebstore.google.com/detail/chathub-all-in-one-chatbo/iaakpnchhognanibcahlpcplchdfmgma?pli=1) 
+- MaxAi's prompts with Category, Use Case, Fav, Public, Own... (https://www.maxai.me/prompts?category=All&use_case=All&keyword=)
+
+Priorities:
+- Use reactive forms & NgRx if possible.
+- Functionality Over Style: Use ABP theme if possible. 
+- ABP/Lepton highest priority → Tailwind → Bootstrap → Angular Material.
+
+Task Breakdown:
+
+ABP Conversation History, Prompt Library, Tiers:
+- Clone and run ABP (https://github.com/chauey/dna.sai, the ng2 folder, create new branch "feature/ai-helper").
+- Define and create entities/schemas for Conversation History and Prompts. Commit changes.
+- Generate and test code using Suite, then commit. (expired ABP license, can still login and generate?)
+- Implement ABP tiers, Free? and Pro enabling multichat.
+
+Angular Components (in shared lib?):
+- View resembling ChatHub's layout called MultiChatContainer, w side panel, tiled/reusable ChatResultPanel (share, clear, history), chat input, prompts lib. 
+Develop functional chat history features, mock AI response data.
+Search/use prompts from the library.
+
+CHROME EXTENSION:
+- extract to Chrome extension/project
+- Develop a settings page.
+- Integrate real APIs (like OpenAI, ChatGPT, Bard, Claude, Bing https://github.com/chathub-dev/chathub/tree/main/src/app/bots).
+
+BONUS:
+Add Summarize btn on youtube page and put summary inline, using AI.
+At button to reply to X/twitter inline, using AI.
+Feel free to recommend/suggest. thx
+
+1)Created ChatHistory API(create,getall) and Integrated in UI
+2)Changes In UI
+3)Created Clear Conversation 
+4)Working on  UI design for Conversation History
